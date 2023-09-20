@@ -3,6 +3,7 @@ using FluentAssertions;
 using levelup;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
+using System.Linq;
 
 namespace DotNetExample.Tests.Steps
 {
@@ -24,16 +25,18 @@ namespace DotNetExample.Tests.Steps
             testObj.GetTotalPositions().Should().Be(numPositions);
         }
 
-        [Then(@"the Game sets the character's X position to (.*)")]
-        public void checkXPosition(int xPosition)
+        [Then(@"the Game sets the character's X position between (.*) and (.*)")]
+        public void checkXPosition(int xStart,  int xEnd)
         {
-            testObj.GetStatus().currentPosition.X.Should().Be(xPosition);
+            int[] range = Enumerable.Range(xStart, xEnd).ToArray();
+            testObj.GetStatus().currentPosition.X.Should().BeOneOf(range);
         }
 
-        [Then(@"the Game sets the character's Y position to (.*)")]
-        public void checkYPosition(int yPosition)
+        [Then(@"the Game sets the character's Y position between (.*) and (.*)")]
+        public void checkYPosition(int yStart, int yEnd)
         {
-            testObj.GetStatus().currentPosition.Y.Should().Be(yPosition);
+            int[] range = Enumerable.Range(yStart, yEnd).ToArray();
+            testObj.GetStatus().currentPosition.X.Should().BeOneOf(range);
         }
 
         [Then(@"the move count is(.*)")]

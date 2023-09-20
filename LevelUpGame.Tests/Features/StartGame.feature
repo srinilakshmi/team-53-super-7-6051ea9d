@@ -7,12 +7,12 @@ Scenario Outline: Start the game
 
     When the game is started
     Then the Game has <numPositions> positions
-    And the Game sets the character's X position to <startingPositionX>
-    And the Game sets the character's Y position to <startingPositionY>
+    And the Game sets the character's X position between <xStart> and <xEnd>
+    And the Game sets the character's Y position between <yStart> and <yEnd>
     And the move count is <startingMoveCount>
     Examples:
 
-        | numPositions | startingPositionX | startingPositionY | startingMoveCount |
-        | 100          | 0                 | 0                 | 0                 |
+        | numPositions | xStart | xEnd | yStart | yEnd| startingMoveCount |
+        | 100          | 0      | 9    | 0      | 9   | 0                 |
         
 
