@@ -8,7 +8,6 @@ This is a very simple starter project to demonstrate SpecFlow and living-doc, as
 * Actions are configured to build and test on both main and develop
 * Actions are configured to publish test results to gh-pages for your repo
 #This is a test
-#Amit test
 NOTE: All specflow tests should have a tag of @acceptance to keep them properly segrated for the make file.
 
 M1 MAC USERS: I had to force living doc to install with the correct architecture using -a arm64. I also had to manually set DOTNET_ROOT env var to the location of dotnet (which dotnet).
