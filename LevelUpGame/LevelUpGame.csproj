@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="colorful.console" Version="1.2.15" />
     <PackageReference Include="Sharprompt" Version="2.4.1" />
   </ItemGroup>
 

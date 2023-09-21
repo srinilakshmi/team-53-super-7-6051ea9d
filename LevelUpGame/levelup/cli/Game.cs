@@ -1,5 +1,8 @@
 using Sharprompt;
 using System.Collections;
+using Console = Colorful.Console;
+using System.Drawing;
+
 namespace levelup.cli;
 public class Game
 {
@@ -51,9 +54,9 @@ public class Game
                 case startingMenuCommands.Exit:
                     EndGame();
                     break;
-                case startingMenuCommands.StartGame:
-                    StartGame();
-                    break;
+                // case startingMenuCommands.StartGame:
+                //     StartGame();
+                //     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -103,18 +106,19 @@ public class Game
 
     private static void printWelcomeMessage()
     {
-        Console.WriteLine("-------------------------------------------------");
-        Console.WriteLine("LEVEL UP GAMES");
-        Console.WriteLine("-------------------------------------------------");
-        Console.WriteLine("Use your arrow keys to select a command below");
-        Console.WriteLine("Create a character with a custom name.");
-        Console.WriteLine("Then, start the game to start your adventure.");
-        Console.WriteLine("-------------------------------------------------");
+        Console.WriteAscii("Monty Python's", Color.FromArgb(255,215,0));
+        Console.WriteAscii("Quest for the Holy Grail", Color.FromArgb(255, 254, 212));
+        Console.WriteLine();
+        Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------");
+        Console.WriteLine();
+        Console.WriteLine("Press ENTER to begin");
+        Console.ReadLine();
     }
 
     static void CreateCharacter()
     {
         var characterName = Prompt.Input<string>("What is your character's name?");
+        Character 
         gameController.CreateCharacter(characterName);
         var gameStatusCharacterName = gameController.GetStatus().characterName;
         Console.WriteLine($"Your character, {gameStatusCharacterName}, is created!");
