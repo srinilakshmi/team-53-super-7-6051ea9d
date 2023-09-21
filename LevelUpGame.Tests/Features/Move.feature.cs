@@ -35,8 +35,9 @@ namespace LevelUpGame.Test.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Move", @"![Move](https://github.com/level-up-program/team-53-super-7-6051ea9d/blob/main/LevelUpGame.Tests/Features/movespec.jpeg)
-    I want to move my character. If they attempt to move past a boundary, the move results in no change in position but does increment move count.", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Move", "![Move](./movespec.jpeg)\n    I want to move my character. If they attempt to move" +
+                    " past a boundary, the move results in no change in position but does increment m" +
+                    "ove count.", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         

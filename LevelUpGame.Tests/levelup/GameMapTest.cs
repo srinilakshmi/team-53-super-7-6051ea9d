@@ -31,11 +31,11 @@ namespace levelup
         [Test]
         public void IsNumberofPositionsValid()
         {
-            int x = (testobj.Xend - testObj.Xstart) + 1;
+            int x = (testObj.Xend - testObj.Xstart) + 1;
 
-            int y = (testobj.Yend - testObj.Ystart) + 1;
+            int y = (testObj.Yend - testObj.Ystart) + 1;
 
-            Assert.IsTrue(testObj.NumberofPositions == (x*y))
+            Assert.IsTrue(testObj.NumberofPositions == (x*y));
 
         }
     }

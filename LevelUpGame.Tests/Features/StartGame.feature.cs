@@ -35,9 +35,7 @@ namespace LevelUpGame.Test.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "StartGame", "![StargGame](https://github.com/level-up-program/team-53-super-7-6051ea9d/blob/ma" +
-                    "in/LevelUpGame.Tests/Features/startgamespec.jpeg)\n    I want to start playing th" +
-                    "e game", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "StartGame", "![StartGame](./startgamespec.jpeg)\n    I want to start playing the game", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
