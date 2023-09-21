@@ -62,6 +62,14 @@ namespace levelup
         {
             //TODO: Implement move - should call something on another class
             //TODO: Should probably also update the game status
+            Turn turn = new Turn(this.GameMap);
+            Position newPos = turn.CalculatePosition(this.character.Position, directionToMove);
+            if(turn.IsPositionValid(newPos))
+            {
+                //Update Game status
+                //Update Character
+            }
+
         }
 
         public void SetCharacterPosition(Position coordinates)
