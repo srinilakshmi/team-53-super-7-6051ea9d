@@ -18,7 +18,12 @@ namespace levelup
         public void IsGameResultInitialized()
         {
 #pragma warning disable CS8602 // Rethrow to preserve stack details
-            Assert.IsNotNull(testObj.GetStatus());
+            var status = testObj.GetStatus();
+            Assert.IsNotNull(status);
+            Assert.AreEqual(status.currentPosition.GetType(), typeof(Position) );
+            Assert.AreEqual(status.currentPosition.X, -1);
+            Assert.AreEqual(status.currentPosition.Y, -1);
+            Assert.AreEqual(status.moveCount,0);
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using FluentAssertions;
 using levelup;
 using NUnit.Framework;
@@ -13,7 +12,7 @@ namespace DotNetExample.Tests.Steps
         GameController testObj = new GameController();
         int startX, startY;
         GameController.DIRECTION direction;
-        Point currentPosition;
+        Position currentPosition;
 
         [Given(@"the character starts at position with XCoordinates (.*)")]
         public void givenTheCharacterStartsAtX(int startX)
@@ -41,7 +40,7 @@ namespace DotNetExample.Tests.Steps
         [When(@"the character moves")]
         public void whenTheCharacterMoves()
         {
-            testObj.SetCharacterPosition(new Point(this.startX, this.startY));
+            testObj.SetCharacterPosition(new Position(this.startX, this.startY));
             testObj.Move(this.direction);
             GameController.GameStatus status = testObj.GetStatus();
             this.currentPosition = status.currentPosition;
