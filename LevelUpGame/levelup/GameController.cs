@@ -5,6 +5,7 @@ namespace levelup
     public class GameController
     {
         public readonly string DEFAULT_CHARACTER_NAME = "Character";
+        private Character character;
 
         public GameMap GameMap{get; }
 
@@ -36,7 +37,7 @@ namespace levelup
 
         // Pre-implemented to demonstrate ATDD
         // TODO: Update this if it does not match your design
-        public void CreateCharacter(String name)
+        public void CreateCharacter(String name, levelup.cli.Game.CharacterType characterType)
         {
             if (name != null && !name.Equals(""))
             {
@@ -46,6 +47,7 @@ namespace levelup
             {
                 this.status.characterName = DEFAULT_CHARACTER_NAME;
             }
+            character = new Character(this.status.characterName, characterType);
         }
 
         public void StartGame()

@@ -14,7 +14,7 @@ public class Game
     {
         Help,
         CreateCharacter,
-        StartGame,
+        //StartGame,
         Exit
     }
 
@@ -35,6 +35,7 @@ public class Game
         EnglishKnight,
         BlackKnight 
     }
+
     static void Main(string[] args)
     {
         printWelcomeMessage();
@@ -118,18 +119,20 @@ public class Game
     static void CreateCharacter()
     {
         var characterName = Prompt.Input<string>("What is your character's name?");
-        Character 
-        gameController.CreateCharacter(characterName);
+        var characterType = Prompt.Select<CharacterType>("Choose Character Type:"); 
+        gameController.CreateCharacter(characterName, characterType);
         var gameStatusCharacterName = gameController.GetStatus().characterName;
-        Console.WriteLine($"Your character, {gameStatusCharacterName}, is created!");
+        Console.WriteLine($"Welcome {gameStatusCharacterName} the {characterType} to Quest for the Holy Grail!");
+        Console.WriteLine("Press Enter to start game...");
+        Console.ReadLine();
+        isGameStarted = true;
     }
+
     static void StartGame()
     {
         isGameStarted = true;
         gameController.StartGame();
-        // TODO: Update this prompt. Also, do you want to get the game status and tell
-        // the character where their character is?
-        Console.WriteLine("Welcome to Forests and Monsters! You have entered a mysterious place.");
+        Console.WriteLine("Entering to Quest for the Holy Grail!! You have entered a mysterious place.");
     }
     static void MoveNorth()
     {
