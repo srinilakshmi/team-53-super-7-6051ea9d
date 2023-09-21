@@ -21,7 +21,10 @@ namespace levelup
         public int Y
         { get;}
 
-
+        public override string ToString()
+        {
+            return $"({X},{Y})";
+        }
     }
 
 }
