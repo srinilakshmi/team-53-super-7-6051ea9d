@@ -1,10 +1,12 @@
-
+using System;
 
 namespace levelup
 {
     public class GameController
     {
         public readonly string DEFAULT_CHARACTER_NAME = "Character";
+
+        public GameMap GameMap{get; }
 
         public record struct GameStatus(
             // TODO: Add other status data
@@ -24,9 +26,11 @@ namespace levelup
         public GameController()
         {
             status.characterName = DEFAULT_CHARACTER_NAME;
-            //Set current position to a nonsense place until you figure out who should initialize
-            status.currentPosition = new Position(-1,-1);
-            //TODO: Write a failing unit test that will force you to set this to the right number
+            GameMap = new GameMap();
+            var random = new System.Random();
+            var x = random.Next(0,10);
+            var y = random.Next(0,10);
+            status.currentPosition = new Position(x, y);
             status.moveCount = 0;
         }
 
