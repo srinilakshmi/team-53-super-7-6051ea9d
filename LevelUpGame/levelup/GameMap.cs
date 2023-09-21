@@ -12,7 +12,9 @@ namespace levelup
         public List<Position> Positions { get; set; }
         public int NumberofPositions { get => Positions.Count; }
 
-        public GameMap()
+        public readonly Position EndingPosition;
+
+        public GameMap(Position endingPosition)
         {
             List<Position> points = new List<Position>();
             for (int i = Xstart; i <= Xend; i++)
@@ -23,7 +25,7 @@ namespace levelup
                 }
             }
             Positions = points;
+            this.EndingPosition = endingPosition;
         }
-
     }
 }

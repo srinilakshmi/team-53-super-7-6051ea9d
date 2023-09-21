@@ -4,9 +4,9 @@ namespace levelup
     {
         private GameMap gameMap;
 
-        public Turn()
+        public Turn(GameMap gameMap)
         {
-            gameMap = new GameMap();
+            this.gameMap = gameMap;
         }
 
         public Position CalculatePosition(Position startingPosition, GameController.DIRECTION direction)

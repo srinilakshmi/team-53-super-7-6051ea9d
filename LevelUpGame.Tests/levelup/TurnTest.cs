@@ -2,20 +2,24 @@ using NUnit.Framework;
 using levelup;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace levelup
 {
     [TestFixture]
     public class TurnTest
     {
-        private GameMap gameMap = new GameMap();
+        private GameMap gameMap;
         private Turn testObj;
         private List<TurnTestResult> turnTestResults;
 
         [SetUp]
         public void SetUp()
         {
-            testObj = new Turn();
+
+        Random rnd = new Random();
+        gameMap = new GameMap(new Position(rnd.Next(0, 10), rnd.Next(0, 10)));
+            testObj = new Turn(gameMap);
             turnTestResults = new List<TurnTestResult>
             {
                 new TurnTestResult (new Position(0, 0), GameController.DIRECTION.NORTH, new Position(0, 1)),
