@@ -32,20 +32,21 @@ namespace levelup
             moveCount = 0;
         }
 
-        public string GetName()
+        public string Name 
         {
-            return this.name;
+            get { return this.name; }
         }
 
-        public Position GetCurrentPosition()
+        public Position Position 
         {
-            return this.currPos;
+            get { return this.currPos; }
         }
 
-        public int GetMoveCount()
+        public int MoveCount 
         {
-            return this.moveCount;
+            get { return this.moveCount; }
         }
+
         public void UpdateCurrentPosition(Position pos)
         {
             this.currPos = pos;

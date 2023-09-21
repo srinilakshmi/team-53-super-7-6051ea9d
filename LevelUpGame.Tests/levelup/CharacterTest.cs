@@ -23,7 +23,7 @@ namespace levelup
         [Test]
         public void IsCharacterHasAName()
         {
-            Assert.IsNotNull(testChar.GetName());
+            Assert.IsNotNull(testChar.Name);
         }
 
         [Test]
@@ -32,56 +32,56 @@ namespace levelup
             string name = "Roger";
             Character chr = new Character(name);
 
-            Assert.AreEqual(chr.GetName(), name);
+            Assert.AreEqual(chr.Name, name);
         }
 
         [Test]
         public void IsCharacterGetPositionReturnsValidPosition()
         {
-            var pos = this.testChar.GetCurrentPosition();
+            var pos = this.testChar.Position;
             Assert.AreEqual(pos.GetType(), typeof(Position) );
         }
 
         [Test]
         public void IsCharacterUpdatePositionChangedtoNotNull()
         {
-            var posBeforeUpdate = this.testChar.GetCurrentPosition();
+            var posBeforeUpdate = this.testChar.Position;
             Position newPos = new levelup.Position(posBeforeUpdate.X + 2, posBeforeUpdate.Y+2);
             this.testChar.UpdateCurrentPosition(newPos);
-            var posAfterUpdate = this.testChar.GetCurrentPosition();
+            var posAfterUpdate = this.testChar.Position;
             Assert.IsNotNull(posAfterUpdate );
         }
 
         [Test]
         public void IsCharacterUpdatePositionChangedPosition()
         {
-            var posBeforeUpdate = this.testChar.GetCurrentPosition();
+            var posBeforeUpdate = this.testChar.Position;
             Position newPos = new levelup.Position(posBeforeUpdate.X + 2, posBeforeUpdate.Y+2);
             this.testChar.UpdateCurrentPosition(newPos);
-            var posAfterUpdate = this.testChar.GetCurrentPosition();
+            var posAfterUpdate = this.testChar.Position;
             Assert.AreNotEqual(posBeforeUpdate, posAfterUpdate );
         }
 
         [Test]
         public void IsCharacterUpdatePositionChangedToGivenPosition()
         {
-            var posBeforeUpdate = this.testChar.GetCurrentPosition();
+            var posBeforeUpdate = this.testChar.Position;
             Position newPos = new levelup.Position(posBeforeUpdate.X + 2, posBeforeUpdate.Y+2);
             this.testChar.UpdateCurrentPosition(newPos);
-            var posAfterUpdate = this.testChar.GetCurrentPosition();
+            var posAfterUpdate = this.testChar.Position;
             Assert.AreEqual(newPos, posAfterUpdate );
         }
 
         [Test]
         public void IsMoveCountInitialized()
         {
-            Assert.NotNull(this.testChar.GetMoveCount());
+            Assert.NotNull(this.testChar.MoveCount);
         }
 
         [Test]
         public void IsMoveCountValid()
         {
-            Assert.GreaterOrEqual(this.testChar.GetMoveCount(), 0);
+            Assert.GreaterOrEqual(this.testChar.MoveCount, 0);
         }
     }
 
