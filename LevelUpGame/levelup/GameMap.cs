@@ -14,6 +14,18 @@ namespace levelup
 
         public readonly Position EndingPosition;
 
+        public GameMap()
+        {
+            List<Position> points = new List<Position>();
+            for (int i = Xstart; i <= Xend; i++)
+            {
+                for (int j = Ystart; j <= Yend; j++)
+                {
+                    points.Add(new Position(i, j));
+                }
+            }
+            Positions = points;
+        }
         public GameMap(Position endingPosition)
         {
             List<Position> points = new List<Position>();
