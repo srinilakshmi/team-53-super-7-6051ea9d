@@ -19,6 +19,8 @@ namespace levelup
         public void IsCharacterCreated()
         {
             Assert.IsNotNull(testChar);
+            Assert.AreEqual(testChar.Position.X, -1);
+            Assert.AreEqual(testChar.Position.Y, -1);
         }
         [Test]
         public void IsCharacterHasAName()

@@ -10,7 +10,7 @@ namespace levelup
         public Character()
         {
             this.name = "character";
-            currPos = new Position(2,2);
+            currPos = new Position(-1,-1);
             moveCount = 0;
         }
         public Character(Position pos)
