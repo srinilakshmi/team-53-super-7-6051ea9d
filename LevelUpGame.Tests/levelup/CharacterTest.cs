@@ -18,7 +18,6 @@ namespace levelup
         [Test]
         public void IsCharacterCreated()
         {
-            #pragma warning disable CS8602 // Rethrow to preserve stack details
             Assert.IsNotNull(testChar);
         }
         [Test]
@@ -28,19 +27,51 @@ namespace levelup
         }
 
         [Test]
+        public void CheckCharacterNameAssignment()
+        {
+            string name = "Roger";
+            Character chr = new Character(name);
+
+            Assert.AreEqual(chr.GetName(), name);
+        }
+
+        [Test]
         public void IsCharacterGetPositionReturnsValidPosition()
         {
             var pos = this.testChar.GetCurrentPosition();
             Assert.AreEqual(pos.GetType(), typeof(Position) );
         }
+
+        [Test]
+        public void IsCharacterUpdatePositionChangedtoNotNull()
+        {
+            var posBeforeUpdate = this.testChar.GetCurrentPosition();
+            Position newPos = new levelup.Position(posBeforeUpdate.X + 2, posBeforeUpdate.Y+2);
+            this.testChar.UpdateCurrentPosition(newPos);
+            var posAfterUpdate = this.testChar.GetCurrentPosition();
+            Assert.IsNotNull(posAfterUpdate );
+        }
+
         [Test]
         public void IsCharacterUpdatePositionChangedPosition()
         {
-            Position pos = new Position()
             var posBeforeUpdate = this.testChar.GetCurrentPosition();
-            this.testChar.UpdateCurrentPosition();
-            Assert.AreEqual(pos.GetType(), typeof(Position) );
+            Position newPos = new levelup.Position(posBeforeUpdate.X + 2, posBeforeUpdate.Y+2);
+            this.testChar.UpdateCurrentPosition(newPos);
+            var posAfterUpdate = this.testChar.GetCurrentPosition();
+            Assert.AreNotEqual(posBeforeUpdate, posAfterUpdate );
         }
+
+        [Test]
+        public void IsCharacterUpdatePositionChangedToGivenPosition()
+        {
+            var posBeforeUpdate = this.testChar.GetCurrentPosition();
+            Position newPos = new levelup.Position(posBeforeUpdate.X + 2, posBeforeUpdate.Y+2);
+            this.testChar.UpdateCurrentPosition(newPos);
+            var posAfterUpdate = this.testChar.GetCurrentPosition();
+            Assert.AreEqual(newPos, posAfterUpdate );
+        }
+
         [Test]
         public void IsMoveCountInitialized()
         {

@@ -10,13 +10,25 @@ namespace levelup
         public Character()
         {
             this.name = "character";
-            currPos = new Position();
+            currPos = new Position(2,2);
+            moveCount = 0;
+        }
+        public Character(Position pos)
+        {
+            this.name = "character";
+            currPos = pos;
             moveCount = 0;
         }
         public Character(string name)
         {
             this.name = name;
             currPos = new Position();
+            moveCount = 0;
+        }
+        public Character(string name, Position pos)
+        {
+            this.name = name;
+            currPos = pos;
             moveCount = 0;
         }
 
@@ -33,6 +45,10 @@ namespace levelup
         public int GetMoveCount()
         {
             return this.moveCount;
+        }
+        public void UpdateCurrentPosition(Position pos)
+        {
+            this.currPos = pos;
         }
     }
 }
