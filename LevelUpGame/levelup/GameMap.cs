@@ -18,7 +18,7 @@ namespace levelup
             List<Point> points = new List<Point>();
             for (int i = Xstart; i <= Xend; i++)
             {
-                for (int j = Ystart; i <= Yend; j++)
+                for (int j = Ystart; j <= Yend; j++)
                 {
                     points.Add(new Point(i, j));
                 }
