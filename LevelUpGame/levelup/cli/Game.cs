@@ -1,7 +1,7 @@
 using Sharprompt;
 using System.Collections;
 namespace levelup.cli;
-class Game
+public class Game
 {
     static GameController gameController = new GameController();
     static List<GameController.GameStatus> gameHistory = new List<GameController.GameStatus>();
@@ -23,6 +23,14 @@ class Game
         East,
         West,
         Exit
+    }
+
+    public enum CharTypes
+    {
+        Monk,
+        FrenchConquistador,
+        EnglishKnight,
+        BlackKnight 
     }
     static void Main(string[] args)
     {

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using levelup;
+using levelup.cli;
 using System;
 
 namespace levelup
@@ -32,7 +33,7 @@ namespace levelup
         public void CheckCharacterNameAssignment()
         {
             string name = "Roger";
-            Character chr = new Character(name);
+            Character chr = new Character(name, Game.CharTypes.BlackKnight.ToString());
 
             Assert.AreEqual(chr.Name, name);
         }
@@ -84,6 +85,24 @@ namespace levelup
         public void IsMoveCountValid()
         {
             Assert.GreaterOrEqual(this.testChar.MoveCount, 0);
+        }
+
+        [Test]
+        public void IsCharacterTypeNotNull()
+        {
+            Assert.NotNull(testChar.Type);
+        }
+
+        [Test]
+        public void IsCharacterTypeValidWithRightType()
+        {
+            Assert.AreEqual(Game.CharTypes.BlackKnight.ToString(), "BlackKnight");
+        }
+
+        [Test]
+        public void IsCharacterTypeValidWithWrongType()
+        {
+            Assert.AreNotEqual(Game.CharTypes.BlackKnight.ToString(), "Batman");
         }
     }
 
