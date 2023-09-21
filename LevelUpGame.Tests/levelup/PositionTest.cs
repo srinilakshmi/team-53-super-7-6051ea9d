@@ -20,12 +20,16 @@ namespace levelup
             Assert.AreEqual(testObj.X, -1);
             Assert.AreEqual(testObj.Y, -1);
         }
-/*
+        
+        
         [Test]
         public void IsPositionWithCoordinatesInitialized()
         {
             Position testPosition = new Position(0,0);
-            Assert.IsNotNull(testObj);
-        } */
+            Assert.IsNotNull(testPosition);
+            Assert.AreEqual(testPosition.X, 0);
+            Assert.AreEqual(testPosition.Y, 0);
+
+        } 
     }
 }
