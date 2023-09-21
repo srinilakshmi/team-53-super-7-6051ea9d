@@ -35,7 +35,9 @@ namespace LevelUpGame.Test.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "StartGame", "    I want to start playing the game", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "StartGame", "![StargGame](https://github.com/level-up-program/team-53-super-7-6051ea9d/blob/ma" +
+                    "in/LevelUpGame.Tests/Features/startgamespec.jpeg)\n    I want to start playing th" +
+                    "e game", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,8 +78,8 @@ namespace LevelUpGame.Test.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Start the game")]
         [NUnit.Framework.CategoryAttribute("acceptance")]
-        [NUnit.Framework.TestCaseAttribute("100", "0", "0", "0", null)]
-        public void StartTheGame(string numPositions, string startingPositionX, string startingPositionY, string startingMoveCount, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("100", "0", "9", "0", "9", "0", null)]
+        public void StartTheGame(string numPositions, string xStart, string xEnd, string yStart, string yEnd, string startingMoveCount, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "acceptance"};
@@ -88,11 +90,13 @@ namespace LevelUpGame.Test.Features
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("numPositions", numPositions);
-            argumentsOfScenario.Add("startingPositionX", startingPositionX);
-            argumentsOfScenario.Add("startingPositionY", startingPositionY);
+            argumentsOfScenario.Add("xStart", xStart);
+            argumentsOfScenario.Add("xEnd", xEnd);
+            argumentsOfScenario.Add("yStart", yStart);
+            argumentsOfScenario.Add("yEnd", yEnd);
             argumentsOfScenario.Add("startingMoveCount", startingMoveCount);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Start the game", @"    Using the default character, start the game and make sure the map is created and the character is placed on it. If my game has a random starting position, I'll need to have a GIVEN that allows me to use a FakeGame that lets me pass a stubbed starting position.", tagsOfScenario, argumentsOfScenario, featureTags);
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -102,19 +106,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
+#line 9
     testRunner.When("the game is started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 10
     testRunner.Then(string.Format("the Game has {0} positions", numPositions), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 10
-    testRunner.And(string.Format("the Game sets the character\'s X position to {0}", startingPositionX), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 11
-    testRunner.And(string.Format("the Game sets the character\'s Y position to {0}", startingPositionY), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("the Game sets the character\'s X position between {0} and {1}", xStart, xEnd), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
+    testRunner.And(string.Format("the Game sets the character\'s Y position between {0} and {1}", yStart, yEnd), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 13
     testRunner.And(string.Format("the move count is {0}", startingMoveCount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

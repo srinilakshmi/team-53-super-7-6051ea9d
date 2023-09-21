@@ -1,4 +1,5 @@
 Feature: StartGame
+![StargGame](https://github.com/level-up-program/team-53-super-7-6051ea9d/blob/main/LevelUpGame.Tests/Features/startgamespec.jpeg)
     I want to start playing the game
 
 @acceptance 
