@@ -77,9 +77,9 @@ namespace LevelUpGame.Test.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Set character name")]
         [NUnit.Framework.CategoryAttribute("acceptance")]
-        [NUnit.Framework.TestCaseAttribute("Erin", "Erin", null)]
-        [NUnit.Framework.TestCaseAttribute("", "Character", null)]
-        public void SetCharacterName(string characterNameInput, string characterNameOutput, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Erin", "Monk", "Erin", null)]
+        [NUnit.Framework.TestCaseAttribute("", "", "Character", null)]
+        public void SetCharacterName(string characterNameInput, string characterType, string characterNameOutput, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "acceptance"};
@@ -90,6 +90,7 @@ namespace LevelUpGame.Test.Features
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("characterNameInput", characterNameInput);
+            argumentsOfScenario.Add("characterType", characterType);
             argumentsOfScenario.Add("characterNameOutput", characterNameOutput);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set character name", "    Character creation is currently split to be very simple: the only customizati" +
                     "on is setting the name.", tagsOfScenario, argumentsOfScenario, featureTags);
@@ -104,7 +105,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
-    testRunner.Given(string.Format("the player supplies the name {0}", characterNameInput), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("the player supplies the name {0} and character type as {1}", characterNameInput, characterType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
     testRunner.When("the character is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

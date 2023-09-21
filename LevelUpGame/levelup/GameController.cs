@@ -39,13 +39,10 @@ namespace levelup
         // TODO: Update this if it does not match your design
         public void CreateCharacter(String name, levelup.cli.Game.CharacterType characterType)
         {
-            if (name != null && !name.Equals(""))
+            this.status.characterName = string.IsNullOrEmpty(name)?DEFAULT_CHARACTER_NAME: name;
+            if(characterType == null)
             {
-                this.status.characterName = name;
-            }
-            else
-            {
-                this.status.characterName = DEFAULT_CHARACTER_NAME;
+                characterType = levelup.cli.Game.CharacterType.Monk;
             }
             character = new Character(this.status.characterName, characterType);
         }
