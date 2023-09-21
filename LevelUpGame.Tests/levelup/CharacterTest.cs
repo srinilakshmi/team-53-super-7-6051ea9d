@@ -33,7 +33,14 @@ namespace levelup
             var pos = this.testChar.GetCurrentPosition();
             Assert.AreEqual(pos.GetType(), typeof(Position) );
         }
-
+        [Test]
+        public void IsCharacterUpdatePositionChangedPosition()
+        {
+            Position pos = new Position()
+            var posBeforeUpdate = this.testChar.GetCurrentPosition();
+            this.testChar.UpdateCurrentPosition();
+            Assert.AreEqual(pos.GetType(), typeof(Position) );
+        }
         [Test]
         public void IsMoveCountInitialized()
         {
