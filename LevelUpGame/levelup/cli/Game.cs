@@ -25,7 +25,7 @@ public class Game
         Exit
     }
 
-    public enum CharTypes
+    public enum CharacterType
     {
         Monk,
         FrenchConquistador,

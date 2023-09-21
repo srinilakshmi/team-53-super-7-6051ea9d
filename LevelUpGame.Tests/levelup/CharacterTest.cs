@@ -33,7 +33,7 @@ namespace levelup
         public void CheckCharacterNameAssignment()
         {
             string name = "Roger";
-            Character chr = new Character(name, Game.CharTypes.BlackKnight.ToString());
+            Character chr = new Character(name, Game.CharacterType.BlackKnight);
 
             Assert.AreEqual(chr.Name, name);
         }
@@ -91,18 +91,6 @@ namespace levelup
         public void IsCharacterTypeNotNull()
         {
             Assert.NotNull(testChar.Type);
-        }
-
-        [Test]
-        public void IsCharacterTypeValidWithRightType()
-        {
-            Assert.AreEqual(Game.CharTypes.BlackKnight.ToString(), "BlackKnight");
-        }
-
-        [Test]
-        public void IsCharacterTypeValidWithWrongType()
-        {
-            Assert.AreNotEqual(Game.CharTypes.BlackKnight.ToString(), "Batman");
         }
     }
 
