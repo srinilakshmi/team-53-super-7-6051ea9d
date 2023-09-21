@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace levelup
 {
@@ -10,17 +9,17 @@ namespace levelup
         public int Ystart { get; set; } = 0;
         public int Yend { get; set; } = 9;
         
-        public List<Point> Positions { get; set; }
+        public List<Position> Positions { get; set; }
         public int NumberofPositions { get => Positions.Count; }
 
         public GameMap()
         {
-            List<Point> points = new List<Point>();
+            List<Position> points = new List<Position>();
             for (int i = Xstart; i <= Xend; i++)
             {
                 for (int j = Ystart; j <= Yend; j++)
                 {
-                    points.Add(new Point(i, j));
+                    points.Add(new Position(i, j));
                 }
             }
             Positions = points;
