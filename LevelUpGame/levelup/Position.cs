@@ -3,7 +3,6 @@ namespace levelup
 
     public class Position
     {
-
         public Position()
         {
             X = -1;
@@ -16,10 +15,8 @@ namespace levelup
             Y = y;
         }
 
-        public int X
-        { get;}
-        public int Y
-        { get;}
+        public int X { get;}
+        public int Y { get;}
 
         public override string ToString()
         {

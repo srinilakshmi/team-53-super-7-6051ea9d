@@ -29,14 +29,12 @@ namespace levelup
             status.characterName = DEFAULT_CHARACTER_NAME;
             GameMap = new GameMap();
             var random = new System.Random();
-            var x = random.Next(0,10);
-            var y = random.Next(0,10);
-            status.currentPosition = new Position(x, y);
+            var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
+            var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
+            status.currentPosition = new Position(initialX, initialY);
             status.moveCount = 0;
         }
 
-        // Pre-implemented to demonstrate ATDD
-        // TODO: Update this if it does not match your design
         public void CreateCharacter(String name, levelup.cli.Game.CharacterType characterType)
         {
             this.status.characterName = string.IsNullOrEmpty(name)?DEFAULT_CHARACTER_NAME: name;

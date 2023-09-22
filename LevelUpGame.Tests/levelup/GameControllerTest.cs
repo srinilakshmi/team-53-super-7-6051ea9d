@@ -23,8 +23,8 @@ namespace levelup
             Assert.IsNotNull(gameMap);
             Assert.IsNotNull(status);
             Assert.AreEqual(status.currentPosition.GetType(), typeof(Position) );
-            Assert.AreEqual(status.currentPosition.X >=0 && status.currentPosition.X <= 9, true);
-            Assert.AreEqual(status.currentPosition.Y >=0 && status.currentPosition.Y <= 9, true);
+            Assert.AreEqual(status.currentPosition.X >= GameMap.Xstart && status.currentPosition.X <= GameMap.Xend, true);
+            Assert.AreEqual(status.currentPosition.Y >= GameMap.Ystart && status.currentPosition.Y <= GameMap.Yend, true);
             Assert.AreEqual(status.moveCount,0);
         }
     }

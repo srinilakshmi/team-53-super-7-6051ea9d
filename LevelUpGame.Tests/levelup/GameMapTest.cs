@@ -23,21 +23,21 @@ namespace levelup
         {
             Assert.IsNotNull(testObj);
 
-            Assert.IsNotNull(testObj.Xstart);
+            Assert.IsNotNull(GameMap.Xstart);
 
-            Assert.IsNotNull(testObj.Xend);
+            Assert.IsNotNull(GameMap.Xend);
 
-            Assert.IsNotNull(testObj.Ystart);
+            Assert.IsNotNull(GameMap.Ystart);
 
-            Assert.IsNotNull(testObj.Yend);
+            Assert.IsNotNull(GameMap.Yend);
         }
         
         [Test]
         public void IsNumberofPositionsValid()
         {
-            int x = (testObj.Xend - testObj.Xstart) + 1;
+            int x = (GameMap.Xend - GameMap.Xstart) + 1;
 
-            int y = (testObj.Yend - testObj.Ystart) + 1;
+            int y = (GameMap.Yend - GameMap.Ystart) + 1;
 
             Assert.IsTrue(testObj.NumberofPositions == (x*y));
 
@@ -53,7 +53,7 @@ namespace levelup
         public void IsEndingPositionValid()
         {           
             Position endPos = testObj.EndingPosition;
-            Assert.IsTrue( endPos.X >= testObj.Xstart && endPos.X <= testObj.Xend && endPos.Y >= testObj.Ystart && endPos.Y <= testObj.Yend);
+            Assert.IsTrue(endPos.X >= GameMap.Xstart && endPos.X <= GameMap.Xend && endPos.Y >= GameMap.Ystart && endPos.Y <= GameMap.Yend);
         }
     }
 }

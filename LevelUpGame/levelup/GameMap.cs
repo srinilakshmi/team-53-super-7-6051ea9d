@@ -4,10 +4,10 @@ namespace levelup
 {
     public class GameMap
     {
-        public int Xstart { get; set; } = 0;
-        public int Xend { get; set; } = 9;
-        public int Ystart { get; set; } = 0;
-        public int Yend { get; set; } = 9;
+        public static int Xstart { get; } = 0;
+        public static int Xend { get; } = 9;
+        public static int Ystart { get; } = 0;
+        public static int Yend { get; } = 9;
         
         public List<Position> Positions { get; set; }
         public int NumberofPositions { get => Positions.Count; }

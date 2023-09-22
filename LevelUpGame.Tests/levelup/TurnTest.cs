@@ -55,7 +55,7 @@ namespace levelup
             foreach(var turnResult in turnTestResults.Where(t => t.StartingPosition.X == 0 && t.StartingPosition.Y == 0))
             {
                 var result = testObj.CalculatePosition(turnResult.StartingPosition, turnResult.Direction);
-                Assert.AreEqual(result.ToString(), turnResult.Result.ToString());
+                AreEqual(turnResult.Result.ToString(), result.ToString());
             }
         }
 
@@ -65,7 +65,7 @@ namespace levelup
             foreach(var turnResult in turnTestResults.Where(t => t.StartingPosition.X == 0 && t.StartingPosition.Y == 9))
             {
                 var result = testObj.CalculatePosition(turnResult.StartingPosition, turnResult.Direction);
-                Assert.AreEqual(result.ToString(), turnResult.Result.ToString());
+                AreEqual(turnResult.Result.ToString(), result.ToString());
             }
         }
 
@@ -75,7 +75,7 @@ namespace levelup
             foreach(var turnResult in turnTestResults.Where(t => t.StartingPosition.X == 9 && t.StartingPosition.Y == 9))
             {
                 var result = testObj.CalculatePosition(turnResult.StartingPosition, turnResult.Direction);
-                Assert.AreEqual(result.ToString(), turnResult.Result.ToString());
+                AreEqual(turnResult.Result.ToString(), result.ToString());
             }
         }
 
@@ -85,7 +85,7 @@ namespace levelup
             foreach(var turnResult in turnTestResults.Where(t => t.StartingPosition.X == 9 && t.StartingPosition.Y == 0))
             {
                 var result = testObj.CalculatePosition(turnResult.StartingPosition, turnResult.Direction);
-                Assert.AreEqual(result.ToString(), turnResult.Result.ToString());
+                AreEqual(turnResult.Result.ToString(), result.ToString());
             }
         }
 
@@ -95,8 +95,32 @@ namespace levelup
             foreach(var turnResult in turnTestResults.Where(t => t.StartingPosition.X == 5 && t.StartingPosition.Y == 5))
             {
                 var result = testObj.CalculatePosition(turnResult.StartingPosition, turnResult.Direction);
-                Assert.AreEqual(result.ToString(), turnResult.Result.ToString());
+                AreEqual(turnResult.Result.ToString(), result.ToString());
             }
+        }
+
+        private void AreEqual(string expected, string result)
+        {
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void TestIsPositionValid()
+        {
+            Assert.IsTrue(testObj.IsPositionValid(new Position(GameMap.Xstart, GameMap.Ystart)));
+            Assert.IsTrue(testObj.IsPositionValid(new Position(GameMap.Xstart, GameMap.Yend)));
+            Assert.IsTrue(testObj.IsPositionValid(new Position(GameMap.Xend, GameMap.Ystart)));
+            Assert.IsTrue(testObj.IsPositionValid(new Position(GameMap.Xend, GameMap.Yend)));
+            
+            var random = new Random();
+            var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
+            var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
+            Assert.IsTrue(testObj.IsPositionValid(new Position(initialX, initialY)));
+            
+            Assert.IsFalse(testObj.IsPositionValid(new Position(GameMap.Xend + 1, GameMap.Yend)));
+            Assert.IsFalse(testObj.IsPositionValid(new Position(GameMap.Xstart - 1, GameMap.Yend)));
+            Assert.IsFalse(testObj.IsPositionValid(new Position(GameMap.Xend, GameMap.Yend + 1)));
+            Assert.IsFalse(testObj.IsPositionValid(new Position(GameMap.Xend, GameMap.Ystart - 1)));
         }
     }
 
