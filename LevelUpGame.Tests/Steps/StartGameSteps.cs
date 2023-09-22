@@ -10,12 +10,12 @@ namespace DotNetExample.Tests.Steps
     [Binding]
     public class StartGameSteps
     {
-        private GameController testObj = new GameController();
+        private GameController testObj;
 
         [When(@"the game is started")]
         public void whenTheGameIsStarted()
         {
-            testObj = new GameController();
+            testObj = new GameController(new GameMap());
             testObj.StartGame();
         }
 

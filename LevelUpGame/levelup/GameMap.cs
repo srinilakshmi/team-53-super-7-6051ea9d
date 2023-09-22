@@ -26,6 +26,7 @@ namespace levelup
             }
             Positions = points;
         }
+        
         public GameMap(Position endingPosition)
         {
             List<Position> points = new List<Position>();

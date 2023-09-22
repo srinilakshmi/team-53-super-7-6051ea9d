@@ -9,7 +9,7 @@ namespace DotNetExample.Tests.Steps
     [Binding]
     public class CreateCharacterSteps
     {
-        private GameController testObj = new GameController();
+        private GameController testObj = new GameController(new GameMap());
 
         private String characterName = "";
         levelup.cli.Game.CharacterType characterType;
@@ -24,7 +24,6 @@ namespace DotNetExample.Tests.Steps
         [When(@"the character is created")]
         public void whenThePlayerSetsTheirName()
         {
-            testObj = new GameController();
             testObj.CreateCharacter(characterName, characterType);
         }
         

@@ -9,7 +9,7 @@ namespace DotNetExample.Tests.Steps
     [Binding]
     public class MoveSteps
     {
-        GameController testObj = new GameController();
+        GameController testObj = new GameController(new GameMap());
         int startX, startY;
         GameController.DIRECTION direction;
         Position currentPosition;

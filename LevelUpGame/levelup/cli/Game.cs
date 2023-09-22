@@ -6,8 +6,8 @@ using System.Drawing;
 namespace levelup.cli;
 public class Game
 {
-    static GameController gameController = new GameController();
-    static List<GameController.GameStatus> gameHistory = new List<GameController.GameStatus>();
+    static GameMap gameMap = new GameMap();
+    static GameController gameController = new GameController(gameMap);
     static Boolean isGameStarted = false;
 
     public enum startingMenuCommands
@@ -36,12 +36,12 @@ public class Game
         BlackKnight 
     }
 
-        public enum MoveActionResult
-        {
-            Success,
-            Bounce,
-            Winner 
-        }
+    public enum MoveActionResult
+    {
+        Success,
+        Bounce,
+        Winner 
+    }
 
     static void Main(string[] args)
     {
@@ -178,7 +178,7 @@ public class Game
     static void PrintSummary()
     {
         Console.WriteLine("Exiting the mysterious land!");
-        foreach (GameController.GameStatus status in gameHistory)
+        foreach (MoveAction status in gameController.GameHistory)
         {
             // TODO: Override toString on game status to print pretty
             Console.WriteLine(status);
@@ -189,7 +189,7 @@ public class Game
 
     private static void updateStatus(GameController.GameStatus status)
     {
-        gameHistory.Add(status);
+        //gameHistory.Add(status);
     }
 
 

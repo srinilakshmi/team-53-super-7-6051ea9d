@@ -7,53 +7,49 @@ namespace levelup
     {
         public readonly string DEFAULT_CHARACTER_NAME = "Character";
         private Character character;
-
-        public Character Character
-        {
-            get
-            {
-                return character;
-            }
-        }
-
         private GameMap gameMap;
-        public GameMap GameMap
-        {
-            get
-            { 
-                return gameMap; 
-            }
-        }
+        private List<MoveAction> gameHistory;
+        private int moveCount;
+    
+        public GameMap GameMap { get => gameMap;}
+        public Character Character { get => character;}
 
         public record struct GameStatus(
-            // TODO: Add other status data
             String characterName,
             Position currentPosition,
             int moveCount,
             Game.CharacterType characterType
             );
 
-        // TODO: Ensure this AND CLI commands match domain model
         public enum DIRECTION
         {
             NORTH, SOUTH, EAST, WEST
         }
 
-        GameStatus status = new GameStatus();
+        public List<MoveAction> GameHistory { get => gameHistory;}
 
-        public GameController()
+        Turn turn;
+
+        public GameController(GameMap gamemap)
         {
-            status.characterName = DEFAULT_CHARACTER_NAME;    
+            gameMap = gamemap;
+            turn = new Turn(gameMap);
+            gameHistory = new List<MoveAction>();
         }
 
         public void CreateCharacter(String name, levelup.cli.Game.CharacterType characterType)
         {
-            this.status.characterName = string.IsNullOrEmpty(name)?DEFAULT_CHARACTER_NAME: name;
+            string characterName = string.IsNullOrEmpty(name)?DEFAULT_CHARACTER_NAME: name;
             if(characterType == null)
             {
                 characterType = levelup.cli.Game.CharacterType.Monk;
             }
-            character = new Character(this.status.characterName, characterType);
+            character = new Character(characterName, characterType);
+        }
+
+        public void SetCurrentMoveCount(int count)
+        {
+            moveCount = count;
         }
 
         public void StartGame()
@@ -61,47 +57,53 @@ namespace levelup
             var random = new System.Random();
             var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
             var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
-            this.status.currentPosition = new Position(initialX, initialY);
-            this.status.moveCount = 0;
-            this.character.UpdateCurrentPosition(new Position(initialX, initialY));
-            var endingX = random.Next(GameMap.Xstart, GameMap.Xend);
-            var endingY = random.Next(GameMap.Ystart, GameMap.Yend);
-            gameMap = new GameMap(new Position(endingX, endingY));    
+            character.UpdateCurrentPosition(new Position(initialX, initialY));
         }
 
         public GameStatus GetStatus()
         {
-            return this.status;
+            var gameStatus = character.GetGameStatus();
+            gameStatus.moveCount = gameHistory.Count;
+            return gameStatus;
         }
 
-        public void Move(DIRECTION directionToMove)
+        public MoveAction Move(DIRECTION directionToMove)
         {
-            //TODO: Implement move - should call something on another class
-            //TODO: Should probably also update the game status
-            Turn turn = new Turn(this.GameMap);
-            Position newPos = turn.CalculatePosition(this.character.Position, directionToMove);
-            if(turn.IsPositionValid(newPos))
+            Position startingPosition = this.character.Position;
+            Position newPosition = turn.CalculatePosition(startingPosition, directionToMove);
+            SetCharacterPosition(newPosition);
+            Game.MoveActionResult moveActionResult;
+            if(startingPosition.ToString() == newPosition.ToString())
             {
-                //Update Game status
-                //Update Character
+                moveActionResult = Game.MoveActionResult.Bounce;
             }
-
+            else if(newPosition.ToString() == gameMap.EndingPosition.ToString())
+            {
+                moveActionResult = Game.MoveActionResult.Winner;
+            }
+            else
+            {
+                moveActionResult = Game.MoveActionResult.Success;
+            }
+            MoveAction moveAction = new MoveAction
+            (
+                startingPosition,
+                directionToMove,
+                newPosition,
+                moveActionResult
+            );
+            gameHistory.Add(moveAction);
+            return moveAction;
         }
 
-        public void SetCharacterPosition(Position coordinates)
+        public void SetCharacterPosition(Position newPosition)
         {
-            //TODO: IMPLEMENT THIS TO SET CHARACTERS CURRENT POSITION -- exists to be testable
-        }
-
-        public void SetCurrentMoveCount(int moveCount)
-        {
-            //TODO: IMPLEMENT THIS TO SET CURRENT MOVE COUNT -- exists to be testable
+            character.UpdateCurrentPosition(newPosition);
         }
 
         public int GetTotalPositions()
         {
-            //TODO: IMPLEMENT THIS TO GET THE TOTAL POSITIONS FROM THE MAP -- exists to be testable
-            return -10;
+            return gameMap.NumberofPositions;
         }
 
 

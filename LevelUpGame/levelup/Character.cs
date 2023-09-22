@@ -56,7 +56,6 @@ namespace levelup
 
             gameStatus.characterName = this.Name;
             gameStatus.currentPosition = this.currPos;
-            gameStatus.moveCount = this.MoveCount;
             gameStatus.characterType = this.Type;
 
             return gameStatus;
