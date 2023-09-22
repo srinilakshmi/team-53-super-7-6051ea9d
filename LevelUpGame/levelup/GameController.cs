@@ -7,6 +7,14 @@ namespace levelup
         public readonly string DEFAULT_CHARACTER_NAME = "Character";
         private Character character;
 
+        public Character Character
+        {
+            get
+            {
+                return character;
+            }
+        }
+
         public GameMap GameMap{get; }
 
         public record struct GameStatus(
@@ -28,11 +36,6 @@ namespace levelup
         {
             status.characterName = DEFAULT_CHARACTER_NAME;
             GameMap = new GameMap();
-            var random = new System.Random();
-            var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
-            var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
-            status.currentPosition = new Position(initialX, initialY);
-            status.moveCount = 0;
         }
 
         public void CreateCharacter(String name, levelup.cli.Game.CharacterType characterType)
@@ -49,6 +52,12 @@ namespace levelup
         {
             // TODO: Implement startGame - Should probably create positions and put the character on one
             // TODO: Should also update the game status?
+            var random = new System.Random();
+            var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
+            var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
+            this.status.currentPosition = new Position(initialX, initialY);
+            this.status.moveCount = 0;
+
         }
 
         public GameStatus GetStatus()
