@@ -9,20 +9,6 @@ namespace levelup
         private int moveCount;
         private Game.CharacterType type;
 
-        public Character()
-        {
-            this.name = "character";
-            currPos = new Position(-1,-1);
-            moveCount = 0;
-            type = Game.CharacterType.Monk;
-        }
-        public Character(Position pos, Game.CharacterType type)
-        {
-            this.name = "character";
-            currPos = pos;
-            moveCount = 0;
-            this.type = type;
-        }
         public Character(string name, Game.CharacterType type)
         {
             this.name = name;
@@ -30,10 +16,11 @@ namespace levelup
             moveCount = 0;
             this.type = type;
         }
-        public Character(string name, Position pos, Game.CharacterType type)
+
+        public Character(string name, Position position, Game.CharacterType type)
         {
             this.name = name;
-            currPos = pos;
+            currPos = position;
             moveCount = 0;
             this.type = type;
         }
@@ -47,6 +34,7 @@ namespace levelup
         {
             get { return this.currPos; }
         }
+
         public Game.CharacterType Type 
         {
             get { return this.type; }
@@ -57,9 +45,9 @@ namespace levelup
             get { return this.moveCount; }
         }
 
-        public void UpdateCurrentPosition(Position pos)
+        public void UpdateCurrentPosition(Position position)
         {
-            this.currPos = pos;
+            this.currPos = position;
         }
 
         public GameController.GameStatus GetGameStatus()
