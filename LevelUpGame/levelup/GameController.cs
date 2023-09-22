@@ -16,7 +16,14 @@ namespace levelup
             }
         }
 
-        public GameMap GameMap{get; }
+        private GameMap gameMap;
+        public GameMap GameMap
+        {
+            get
+            { 
+                return gameMap; 
+            }
+        }
 
         public record struct GameStatus(
             // TODO: Add other status data
@@ -36,8 +43,7 @@ namespace levelup
 
         public GameController()
         {
-            status.characterName = DEFAULT_CHARACTER_NAME;
-            GameMap = new GameMap();
+            status.characterName = DEFAULT_CHARACTER_NAME;    
         }
 
         public void CreateCharacter(String name, levelup.cli.Game.CharacterType characterType)
@@ -52,14 +58,15 @@ namespace levelup
 
         public void StartGame()
         {
-            // TODO: Implement startGame - Should probably create positions and put the character on one
-            // TODO: Should also update the game status?
             var random = new System.Random();
             var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
             var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
             this.status.currentPosition = new Position(initialX, initialY);
             this.status.moveCount = 0;
-
+            this.character.UpdateCurrentPosition(new Position(initialX, initialY));
+            var endingX = random.Next(GameMap.Xstart, GameMap.Xend);
+            var endingY = random.Next(GameMap.Ystart, GameMap.Yend);
+            gameMap = new GameMap(new Position(endingX, endingY));    
         }
 
         public GameStatus GetStatus()

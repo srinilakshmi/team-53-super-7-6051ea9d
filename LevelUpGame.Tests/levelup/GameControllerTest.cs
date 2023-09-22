@@ -23,17 +23,24 @@ namespace levelup
             Assert.IsNotNull(status);
             
         }
+
+        [Test]
         public void IsGameStartedProperly()
-        {
-            var status = testObj.GetStatus();   
-            Assert.IsNotNull(status);
+        {  
+            string name = "Andrew";
+            Game.CharacterType characterType = Game.CharacterType.Monk;
+            testObj.CreateCharacter(name, characterType);
             testObj.StartGame();
+            var status = testObj.GetStatus(); 
             var gameMap = testObj.GameMap;
             Assert.IsNotNull(gameMap);
             Assert.AreEqual(status.currentPosition.GetType(), typeof(Position) );
             Assert.AreEqual(status.currentPosition.X >= GameMap.Xstart && status.currentPosition.X <= GameMap.Xend, true);
             Assert.AreEqual(status.currentPosition.Y >= GameMap.Ystart && status.currentPosition.Y <= GameMap.Yend, true);
             Assert.AreEqual(status.moveCount,0);
+            Assert.AreEqual(status.currentPosition.X, testObj.Character.Position.X);
+            Assert.AreEqual(status.currentPosition.Y, testObj.Character.Position.Y);
+            Assert.IsNotNull(testObj.GameMap.EndingPosition);
         }
 
         [Test]
