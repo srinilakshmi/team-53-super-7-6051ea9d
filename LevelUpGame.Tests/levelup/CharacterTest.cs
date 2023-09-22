@@ -13,7 +13,7 @@ namespace levelup
         [SetUp]
         public void SetUp()
         {
-            testChar  = new Character();
+            testChar  = new Character("Test Player", Game.CharacterType.Monk);
         } 
             
         [Test]
