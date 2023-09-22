@@ -34,7 +34,7 @@ namespace levelup
         {
             string name = "Roger";
             Character chr = new Character(name, Game.CharacterType.BlackKnight);
-
+            //TODO: Missing the test for the character type being set properly;
             Assert.AreEqual(chr.Name, name);
         }
 
