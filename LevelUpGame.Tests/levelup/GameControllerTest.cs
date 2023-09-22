@@ -54,5 +54,17 @@ namespace levelup
             Assert.AreEqual(character.Name, "Andrew");
             Assert.AreEqual(Game.CharacterType.Monk, character.Type);
         }
+
+        [Test]
+        public void IsCharacterPositionBeingSet()
+        {
+            IsGameStartedProperly();
+            var newPosition = new Position(3,4);
+            testObj.SetCharacterPosition(newPosition);
+            Assert.AreEqual(newPosition.X, testObj.Character.Position.X);
+            Assert.AreEqual(newPosition.Y, testObj.Character.Position.Y);
+            Assert.AreEqual(newPosition.X, testObj.GetStatus().currentPosition.X);
+            Assert.AreEqual(newPosition.Y, testObj.GetStatus().currentPosition.Y);
+        }
     }
 }
