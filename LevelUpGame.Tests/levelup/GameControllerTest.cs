@@ -40,7 +40,7 @@ namespace levelup
             Assert.AreEqual(status.moveCount,0);
             Assert.AreEqual(status.currentPosition.X, testObj.Character.Position.X);
             Assert.AreEqual(status.currentPosition.Y, testObj.Character.Position.Y);
-            //Assert.IsNotNull(testObj.GameMap.EndingPosition);
+            Assert.IsNotNull(testObj.GameMap.EndingPosition);
         }
 
         [Test]

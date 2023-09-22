@@ -32,8 +32,6 @@ namespace levelup
 
         public GameController(GameMap gamemap)
         {
-            gameMap = gamemap;
-            turn = new Turn(gameMap);
             gameHistory = new List<MoveAction>();
         }
 
@@ -58,6 +56,11 @@ namespace levelup
             var initialX = random.Next(GameMap.Xstart, GameMap.Xend);
             var initialY = random.Next(GameMap.Ystart, GameMap.Yend);
             character.UpdateCurrentPosition(new Position(initialX, initialY));
+            var endX = random.Next(GameMap.Xstart, GameMap.Xend);
+            var endY = random.Next(GameMap.Ystart, GameMap.Yend);
+            gameMap = new GameMap(new Position(endX, endY));
+            turn = new Turn(gameMap);
+            
         }
 
         public GameStatus GetStatus()
