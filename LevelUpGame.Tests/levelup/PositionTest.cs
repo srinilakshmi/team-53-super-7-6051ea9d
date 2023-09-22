@@ -31,6 +31,14 @@ namespace levelup
             Assert.AreEqual(testPosition.Y, 0);
         } 
 
-        //TODO: Add test case for ToString() override
+        [Test]
+        public void ToStringTest()
+        {
+            Assert.AreEqual("(1,1)",new Position(1,1).ToString());
+            Assert.AreEqual("(0,0)",new Position(0,0).ToString());
+            Assert.AreNotEqual("(0,0)",new Position(-1,0).ToString());
+            Assert.AreNotEqual("(0,0)",new Position(2,3).ToString());
+        }
+
     }
 }
