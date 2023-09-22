@@ -30,12 +30,12 @@ namespace levelup
         }
 
         [Test]
-        public void CheckCharacterNameAssignment()
+        public void CheckCharacterNameAndTypeAssignment()
         {
             string name = "Roger";
             Character chr = new Character(name, Game.CharacterType.BlackKnight);
-            //TODO: Missing the test for the character type being set properly;
             Assert.AreEqual(chr.Name, name);
+            Assert.IsTrue(Enum.IsDefined(typeof(Game.CharacterType), chr.Type));
         }
 
         [Test]
