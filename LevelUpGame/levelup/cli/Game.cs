@@ -36,6 +36,13 @@ public class Game
         BlackKnight 
     }
 
+        public enum MoveActionResult
+        {
+            Success,
+            Bounce,
+            Winner 
+        }
+
     static void Main(string[] args)
     {
         printWelcomeMessage();

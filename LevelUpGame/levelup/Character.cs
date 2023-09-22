@@ -61,5 +61,17 @@ namespace levelup
         {
             this.currPos = pos;
         }
+
+        public GameController.GameStatus GetGameStatus()
+        {
+            GameController.GameStatus gameStatus = new GameController.GameStatus();
+
+            gameStatus.characterName = this.Name;
+            gameStatus.currentPosition = this.currPos;
+            gameStatus.moveCount = this.MoveCount;
+            gameStatus.characterType = this.Type;
+
+            return gameStatus;
+        }
     }
 }

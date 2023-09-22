@@ -15,7 +15,7 @@ namespace levelup
         public void SetUp()
         {
             Random rnd = new Random();
-            testObj = new GameMap(new Position(rnd.Next(0, 10), rnd.Next(0, 10)));
+            testObj = new GameMap(new Position(rnd.Next(GameMap.Xstart, GameMap.Xend+1), rnd.Next(GameMap.Ystart, GameMap.Yend+1)));
         }
 
         [Test]

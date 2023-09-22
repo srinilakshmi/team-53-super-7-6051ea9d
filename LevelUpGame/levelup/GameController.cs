@@ -1,4 +1,5 @@
 using System;
+using levelup.cli;
 
 namespace levelup
 {
@@ -21,7 +22,8 @@ namespace levelup
             // TODO: Add other status data
             String characterName,
             Position currentPosition,
-            int moveCount
+            int moveCount,
+            Game.CharacterType characterType
             );
 
         // TODO: Ensure this AND CLI commands match domain model

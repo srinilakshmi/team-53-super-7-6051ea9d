@@ -92,6 +92,12 @@ namespace levelup
         {
             Assert.NotNull(testChar.Type);
         }
+
+        [Test]
+        public void IsGetGameStatusReturnsNotNull()
+        {
+            Assert.IsNotNull(testChar.GetGameStatus());
+        }
     }
 
 
