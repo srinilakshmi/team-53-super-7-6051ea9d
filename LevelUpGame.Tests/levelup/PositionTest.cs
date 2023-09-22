@@ -29,7 +29,8 @@ namespace levelup
             Assert.IsNotNull(testPosition);
             Assert.AreEqual(testPosition.X, 0);
             Assert.AreEqual(testPosition.Y, 0);
-
         } 
+
+        //TODO: Add test case for ToString() override
     }
 }
